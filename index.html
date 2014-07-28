@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hangman</title>
+	<style>
+		body {
+			margin: 0;
+			font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+		}
+
+		ul {
+			margin: 0;
+		}
+
+		ul>li {
+			list-style: none;
+		}
+
+		button {
+			background-color: #4A587A;
+			border: 0;
+			color: #FFFFFF;
+			padding: 10px;
+			font-family: Monaco, Consolas, "Lucida Console", monospace;
+		}
+
+		.clearfix{
+			clear: both;
+		}
+
+		.status-bar {
+			width: 100%;
+			height: 50px;
+			background-color: #B69C66;
+			color: #4A587A;
+			text-transform: capitalize;
+			font-weight: bold;
+			font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+			
+		}
+
+		.status-bar button {
+			float: left;
+			margin: 7px 0 0 7px;
+			width: 135px;
+		}
+
+		.status-bar li {
+			width: 29%;
+			float: left;
+			text-align: center;
+			margin-top: 15px;
+		}
+		
+		.letters li {
+			float: left;
+			margin: 0 20px 0 0;
+		}
+
+		button#end {
+			display: none;
+		}
+
+		#wordboard {
+			margin: 50px auto;
+		}
+
+		#guessboard  {
+			margin-top: 50px;
+		}
+
+		.gameboard {
+			margin: auto;
+			overflow: auto;
+			width: 80%;
+		}
+
+		.disabled-overlay {
+			background-color: #000;
+			opacity: 0.6;
+			width: 100%;
+			height: 100%;
+			z-index: 10;
+			position: absolute;
+			left: 0;
+		}
+
+	</style>
+</head>
+<body>
+<div id="game">
+	<script type="text/template" id="letter-template">
+		<span><%= value %></span>
+	</script>
+
+	<div class="status-bar">
+		<button id="start">Start Game</button>
+		<button id="end">End Game</button>
+
+		<div id="player-bar">
+			<script type="text/template" id="player-template">
+				<li class="player-name"><%= name %></li>
+				<li class="player-status"><%= status %></li>
+				<li class="player-score">Score: <%= score %></li>
+			</script>
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+	<div class="gameboard">
+		<div class="disabled-overlay"></div>
+		<div id="wordboard" class="letters"></div>
+		<div class="clearfix"></div>
+	
+		<div id="guessboard">
+			<form id="guess-form">
+				<label for="guess-textbox">Guess:</label>
+				<input id="guess-textbox" type="text" name="guess" maxlength="1" />
+				<button type="submit">Guess</button>
+			</form>
+			<div id="guessed-letters" class="letters"></div>
+		</div>
+	</div>
+
+</div>
+	<script type="text/javascript" src="js/underscore-min.js" ></script>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/backbone-min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
